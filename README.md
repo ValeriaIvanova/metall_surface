@@ -47,9 +47,9 @@
 ## Faster RCNN
 
 - data - папка хранящая данные о файлах
- -  dataset
-      -- train - данные для обучение
-      -- test - данные для тестирования
-  -- data_config
+ -   dataset
+      - train - данные для обучение
+      - test - данные для тестирования
+  -   data_config
 
 ©️Ivanova Valeria
