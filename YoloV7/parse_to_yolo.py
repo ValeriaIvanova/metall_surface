@@ -54,13 +54,13 @@ for fil in files:
 
     for obj in root.findall('object'):
         label = obj.find("name").text
-        # check for new classes and append to list
+        # проверка наличия новых классов и добавление в список
         if label not in classes:
             classes.append(label)
         index = classes.index(label)
         pil_bbox = [int(x.text) for x in obj.find("bndbox")]
         yolo_bbox = xml_to_yolo_bbox(pil_bbox, width, height)
-        # convert data to string
+        # преобразовать данные в строку
         bbox_string = " ".join([str(x) for x in yolo_bbox])
         result.append(f"{index} {bbox_string}")
 
