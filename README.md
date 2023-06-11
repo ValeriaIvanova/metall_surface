@@ -68,6 +68,7 @@
 
 Результаты обучения (график точности)
 ![image](https://github.com/ValeriaIvanova/metall_surface/assets/62417917/95f373fb-2409-44ee-9e8e-b3d9785d0266)
+
 Рисунок 3 - График точности
 
 ©️Ivanova Valeria
