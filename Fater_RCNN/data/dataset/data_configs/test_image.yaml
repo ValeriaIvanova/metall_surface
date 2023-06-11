@@ -1,0 +1,9 @@
+TEST_DIR_IMAGES: 'data/dataset/test'
+TEST_DIR_LABELS: 'data/dataset/test'
+
+# Имя классов
+CLASSES: ['__background__',
+    'inclusion', 'crazing', 'patches', 'pitted_surface','rolled-in_scale','scratches'
+]
+
+NC: 7
