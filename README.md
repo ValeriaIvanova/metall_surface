@@ -47,9 +47,27 @@
 ## Faster RCNN
 
 - data - папка хранящая данные о файлах
- -   dataset
+   -   dataset
       - train - данные для обучение
       - test - данные для тестирования
-  -   data_config
+   -   data_config - файлы конфигураций для обучения и тестирования
+- models - модели обучения faster r-cnn
+- outputs - сохранения обученной модели
+- torch_utils  - необходимые утилиты для PyTorch
+- utils - пользовательские утилиты
+
+
+Для обучения модели необходимо выполнить команду:
+
+`!python train.py --model fasterrcnn_resnet50_fpn_v2 --config data_configs/dataset.yaml --epochs 40 --project-name fasterrcnn _dataset --use-train-aug --no-mosaic –batch-size 32 `
+--modell: Здесь мы используем faster rcnn_resnet50_fpn_v2, чтобы указать, что мы хотим обучить новую модель Faster RCNN.
+--config: Он принимает путь к файлу конфигурации набора данных – data/dataset.yaml
+-- epoch: Мы обучаем модель для 40 эпох.
+--project-name: Предоставление строкового значения этому аргументу сохранит результаты с этим именем папки внутри results / train.
+--batch-size: Количество итераций в одной эпохе, в данном случае – 32.
+
+Результаты обучения (график точности)
+![image](https://github.com/ValeriaIvanova/metall_surface/assets/62417917/95f373fb-2409-44ee-9e8e-b3d9785d0266)
+Рисунок 3 - График точности
 
 ©️Ivanova Valeria
