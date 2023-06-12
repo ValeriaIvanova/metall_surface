@@ -44,7 +44,7 @@ class CustomDataset(Dataset):
         
     def read_and_clean(self):
         # Удалите все изображения и метки, когда XML-файл
-        # файл не содержит никакого объекта.
+        # не содержит никакого объекта.
         for annot_path in self.all_annot_paths:
             tree = et.parse(annot_path)
             root = tree.getroot()
@@ -153,7 +153,7 @@ class CustomDataset(Dataset):
 
         image, _, _, _, _, _, _, _ = self.load_image_and_labels(index=index)
         orig_image = image.copy()
-        # Resize the image according to the `confg.py` resize.
+        # Изменение размера изображения в соответствии с `config.py `
         image = cv2.resize(image, resize_factor)
         h, w, c = image.shape
         s = h // 2
@@ -171,9 +171,9 @@ class CustomDataset(Dataset):
             labels, area, iscrowd, dims = self.load_image_and_labels(
             index=index
             )
-            # Resize the current image according to the above resize,
+            #Измениние размера текущего изображения в соответствии с приведенным выше изменением,
             # else `result_image[y1a:y2a, x1a:x2a] = image[y1b:y2b, x1b:x2b]`
-            # will give error when image sizes are different.
+            # выдаст ошибку, если размеры изображений разные.
             image = cv2.resize(image, resize_factor)
             if i == 0:
                 x1a, y1a, x2a, y2a = max(xc - w, 0), max(yc - h, 0), xc, yc  # xmin, ymin, xmax, ymax (large image)
@@ -214,7 +214,7 @@ class CustomDataset(Dataset):
             torch.tensor(np.array(final_classes)), area, iscrowd, dims
 
     def __getitem__(self, idx):
-        # Capture the image name and the full image path.
+        # Запись названия изображения и полный путь к нему.
         if not self.mosaic:
             image, image_resized, orig_boxes, boxes, \
                 labels, area, iscrowd, dims = self.load_image_and_labels(
@@ -229,10 +229,9 @@ class CustomDataset(Dataset):
                 )
                 if len(boxes) > 0:
                     break
-        
-        # visualize_mosaic_images(boxes, labels, image_resized, self.classes)
 
-        # Prepare the final `target` dictionary.
+
+        # Подготовка окончательного `target` словаря
         target = {}
         target["boxes"] = boxes
         target["labels"] = labels
@@ -240,7 +239,7 @@ class CustomDataset(Dataset):
         target["iscrowd"] = iscrowd
         image_id = torch.tensor([idx])
         target["image_id"] = image_id
-        if self.use_train_aug: # Use train augmentation if argument is passed.
+        if self.use_train_aug: # Использовать обучающий набор, если передан аргумент.
             train_aug = get_train_aug()
             sample = train_aug(image=image_resized,
                                      bboxes=target['boxes'],
@@ -262,12 +261,12 @@ class CustomDataset(Dataset):
 
 def collate_fn(batch):
     """
-    To handle the data loading as different images may have different number 
-    of objects and to handle varying size tensors as well.
+    Для обработки загрузки данных, поскольку разные изображения могут содержать разное количество
+    объектов, а также для обработки тензоров разного размера.
     """
     return tuple(zip(*batch))
 
-# Prepare the final datasets and data loaders.
+# Подготовка окончательного наборы данных и загрузчика данных.
 def create_train_dataset(
     train_dir_images, train_dir_labels, 
     resize_width, resize_height, classes,
