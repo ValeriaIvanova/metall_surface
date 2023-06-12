@@ -71,4 +71,25 @@
 
 Рисунок 3 - График точности
 
-©️Ivanova Valeria
+Для тестирования модели необходимо в консоли ввести команду: 
+
+`python testing.py --weights outputs/training/fasterrcnn_dataset/best_model.pth --input data/dataset/test1 --show-image --threshold 0.7`
+-- weights - веса задаются на основе обученной нами модели
+-- input - указываем путь к данным для теста
+-- show-image - показать результат
+-- threshold - порог точности определения (распознавания)
+
+
+Чтобы запустить GUI, необходимо выполнить команду:
+
+`python gui.py --weights outputs/training/fasterrcnn_dataset/best_model.pth --show-image --threshold 0.7`
+-- weights - веса задаются на основе обученной нами модели
+-- show-image - показать результат
+-- threshold - порог точности определения (распознавания)
+
+Результат приведен ниже (рис. 4)
+
+![image](https://github.com/ValeriaIvanova/metall_surface/assets/62417917/8319aa2a-9a62-4ec2-86ea-8d4530d8ed74)
+Рисунок 4 - Пример работы приложения
+
+©️Ivanova Valeria, 2023
