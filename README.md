@@ -55,6 +55,11 @@
 - outputs - сохранения обученной модели
 - torch_utils  - необходимые утилиты для PyTorch
 - utils - пользовательские утилиты
+- datasets.py - настройка датасета
+- gui.py - графический интерфейс
+- requirements.txt - необходимые библиотеки
+- testing.py - код тестирования модели
+- train.py - код обучения модели
 
 
 Для обучения модели необходимо выполнить команду:
@@ -92,4 +97,6 @@
 ![image](https://github.com/ValeriaIvanova/metall_surface/assets/62417917/8319aa2a-9a62-4ec2-86ea-8d4530d8ed74)
 Рисунок 4 - Пример работы приложения
 
+
+* ссылка на датасет: https://drive.google.com/file/d/1ccXP0nv-AgqsIMyh0Ek8bGiRihqjUZov/view?usp=sharing
 ©️Ivanova Valeria, 2023
